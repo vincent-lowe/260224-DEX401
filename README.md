@@ -64,5 +64,7 @@ https://anypoint.mulesoft.com
 |Smooth Criminal|Luca Stricagnoli||
 |My Rifle, My Pony And Me|Dean Martin and Ricky Nelson|from the movie Rio Bravo|
 |This Old Town|Nanci Griffith||
+|The Hitter|Mark Erelli|Mark wrote this for his son|
+|Man of Constant Sorrow|Geoff Castellucci|All voices on the track are Geoff|
 
 
