@@ -25,7 +25,7 @@ DataWeave Playground:
 https://dataweave.mulesoft.com/learn/
 
 Install Anypoint Code Builder
-https://somewhere.com/download
+https://docs.mulesoft.com/anypoint-code-builder/start-acb
 
 Help:
 https://help.mulesoft.com/
@@ -43,9 +43,9 @@ https://status.mulesoft.com
 Java VM: https://docs.mulesoft.com/general/java-support
 
 ------------------------------------------------------------------------------
-https://anypoint.mulesoft.com
+Anypoint Platform (Free Trial): https://anypoint.mulesoft.com
 
-https://anypoint.mulesoft.com/exchange/?view=grid&type=app
+Extra Credit for DataWeave learners: https://github.com/vincent-lowe/dataweave-learning
 
 Classroom Playlist
 
