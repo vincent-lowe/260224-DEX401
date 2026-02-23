@@ -15,10 +15,14 @@ Salesforce Mimeo: https://salesforce.mimeo.digital/MuleSoft
 eBook Redemption Key: USMQ9SOFQGT8
 
 -------------------------------------------------------------------------------------------------------------------
-Survey Link:									https://www.research.net/r/trailheadacademy
-Survey ID:										TASM-041561
+
+Survey Link: https://www.research.net/r/trailheadacademy
+
+Survey ID: TASM-041561
+
 -------------------------------------------------------------------------------------------------------------------
 Zoom Link: <<Zoom Link>>
+
 Meeting ID: <<Meeting ID>>
 
 Class Setup (pre-class): https://trailhead.salesforce.com/help?article=Computer-Setup-Guide-for-MuleSoft-Expert-Led-Classes#DEX401
@@ -42,12 +46,17 @@ Status:
 https://status.mulesoft.com 
    
 ------------------------------------------------------------------------------
+
 Java VM: https://docs.mulesoft.com/general/java-support
+
 MuleSoft Pricing & Support: https://www.mulesoft.com/anypoint-pricing
+
 Einstein for Anypoint Code Builder: https://videos.mulesoft.com/watch/Z3Xzk8RFds5erbzLASev1W
+
 Log Analyzer: https://help.salesforce.com/s/articleView?language=en_US&id=Support-Log-file-analyzer-tool&type=1
+
 ------------------------------------------------------------------------------
+Anypoint Platform: 
 https://anypoint.mulesoft.com
-https://anypoint.mulesoft.com/exchange/?view=grid&type=app
 
 
