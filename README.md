@@ -71,4 +71,6 @@ https://anypoint.mulesoft.com
 |The Hitter|Mark Erelli|Mark wrote this for his son|
 |Man of Constant Sorrow|Geoff Castellucci|All voices on the track are Geoff|
 |The City of New Orleans|Arlo Guthrie||
+|Can't Find My Way Home|Bonnie Raitt|Stevie Winwood cover|
+
 
