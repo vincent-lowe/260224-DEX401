@@ -65,7 +65,7 @@ https://anypoint.mulesoft.com
 
 |Track Title|Artist|Notes|
 |-----------|------|-----|
-|Smooth Criminal|Luca Stricagnoli||
+|Smooth Criminal|Luca Stricagnoli|Find the YouTube video on this - you will be amazed|
 |My Rifle, My Pony And Me|Dean Martin and Ricky Nelson|from the movie Rio Bravo|
 |This Old Town|Nanci Griffith||
 |The Hitter|Mark Erelli|Mark wrote this for his son|
