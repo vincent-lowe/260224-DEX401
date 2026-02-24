@@ -72,6 +72,6 @@ https://anypoint.mulesoft.com
 |Man of Constant Sorrow|Geoff Castellucci|All voices on the track are Geoff|
 |The City of New Orleans|Arlo Guthrie||
 |Can't Find My Way Home|Bonnie Raitt|Stevie Winwood cover|
-|Just Breathe|Willie Nelson with Lukas Nelson|Trent Reznor cover|
+|Just Breathe|Willie Nelson with Lukas Nelson|Eddie Vedder cover|
 
 
