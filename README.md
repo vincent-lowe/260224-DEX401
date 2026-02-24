@@ -4,6 +4,10 @@ Vincent Lowe
 
 vlowe@salesforce.com
 
+Cloudshare Login Link: https://use.cloudshare.com/Class/yk7ui
+
+Passphrase: Scarlet the Trustworthy Wombat
+
 -------------------------------------------------------------------------------------------------------------------
 
 Trailhead Academy: https://trailheadacademy.salesforce.com/my-learning
