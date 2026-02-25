@@ -76,6 +76,8 @@ https://anypoint.mulesoft.com
 |Tupelo Honey|Reina del Cid|now records as Elle Cordova|
 |Can't Let Go|Lucinda Williams||
 |Dos Oruguitas|Stephen Joseph|Instrumental cover of song from Encanto|
+|Vincent Harp Solo|Vincent|It's the only song he knows on harmonica|
+|Analog Hero|Mark Erelli||
 
 
 
