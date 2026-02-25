@@ -75,6 +75,8 @@ https://anypoint.mulesoft.com
 |Just Breathe|Willie Nelson with Lukas Nelson|Eddie Vedder cover|
 |Tupelo Honey|Reina del Cid|now records as Elle Cordova|
 |Can't Let Go|Lucinda Williams||
+|Dos Oruguitas|Stephen Joseph|Instrumental cover of song from Encanto|
+
 
 
 
