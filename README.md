@@ -78,6 +78,7 @@ https://anypoint.mulesoft.com
 |Dos Oruguitas|Stephen Joseph|Instrumental cover of song from Encanto|
 |Vincent Harp Solo|Vincent|It's the only song he knows on harmonica|
 |Analog Hero|Mark Erelli||
+|Hello Goodbye|The Beatles||
 
 
 
