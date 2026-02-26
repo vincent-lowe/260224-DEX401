@@ -1,0 +1,45 @@
+	<flow name="getDeltaFlights" doc:id="032d06e2-cdb1-4114-8475-7e71a86b2f72">
+		<http:listener doc:name="GET /delta" doc:id="7f9fad8b-8b4d-4d3b-876c-8dec12650896" config-ref="mua-flights-api-httpListenerConfig" path="/delta" />
+		<flow-ref doc:name="setDestination" doc:id="4cee4fff-b8d8-49de-8f61-2920d9973574" name="setDestination" />
+		<ee:transform doc:name="map input data" doc:id="9dc5e859-6879-4426-9a63-0e8228524095">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/xml
+ns ns0 http://soap.training.mulesoft.com/
+---
+{
+	ns0#findFlight: {
+		destination: vars.destination
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<wsc:consume doc:name="Delta Flights" doc:id="c19cd050-31c3-4212-9bf5-6a23b9364879" config-ref="Delta_Consumer_Config" operation="findFlight" />
+		<ee:transform doc:name="to canon" doc:id="1f32489b-6fc5-4a54-a995-2a65fa9aa2ab">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+ns ns0 http://soap.training.mulesoft.com/
+---
+payload.body.ns0#findFlightResponse.*return map ( return , indexOfReturn ) -> {
+	airline: return.airlineName default "",
+	flightCode: return.code default "",
+	fromAirportCode: return.origin default "",
+	toAirportCode: return.destination default "",
+	departureDate: return.departureDate default "",
+	emptySeats: return.emptySeats default 0,
+	price: return.price default 0,
+	planeType: return.planeType default ""
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<validation:is-not-null doc:name="payload" doc:id="883c65cd-6e8c-420a-b936-740f9f3ee9a2" value="#[payload]">
+			<error-mapping sourceType="VALIDATION:NULL" targetType="FLIGHTS:NO_FLIGHTS_FOUND" />
+		</validation:is-not-null>
+		<error-handler >
+			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="530249bd-890a-48e4-9575-a0ed1d8a0a86" >
+				<logger level="INFO" doc:name="Logger" doc:id="8c695450-8fee-40cf-b450-5283bde2e4a3" message='output text --- "\nDelta Flow local error handler executed\n"'/>
+				<set-payload value="#[[]]" doc:name="empty array" doc:id="092c8c9a-03b0-4f9d-957c-96ef31a6d404" />
+			</on-error-continue>
+		</error-handler>
+	</flow>
