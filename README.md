@@ -83,44 +83,9 @@ https://anypoint.mulesoft.com
 |How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
 |Sixteen Tons|Geoff Castellucci||
 |Foggy Mountain Breakdown|Earl Scruggs||
+|The Cape|Guy Clark||
 
 
-	<flow name="getDeltaFlights" doc:id="576a29f5-1bdd-4ed8-89b1-0af7a53e5d2e" >
-		<http:listener doc:name="GET /delta" doc:id="5e04bc01-1e55-451f-a230-845f754528c5" config-ref="mua-flights-api-httpListenerConfig" path="/delta"/>
-		<flow-ref doc:name="setDestination" doc:id="58f50b4b-9434-4861-84ec-7e436fc8a699" name="setDestination"/>
-		<ee:transform doc:name="map input data" doc:id="89f4f97e-bfa0-40f7-91ed-c1a9f3982bae" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-output application/xml
-ns ns0 http://soap.training.mulesoft.com/
----
-{
-	ns0#findFlight: {
-		destination: vars.destination
-	}
-}]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
-		<wsc:consume doc:name="Delta Flights" doc:id="80984984-18d6-455d-806f-61417a01f372" config-ref="Delta_Consumer_Config" operation="findFlight"/>
-		<ee:transform doc:name="to canon" doc:id="6f784d2e-a162-40c8-b10c-76d24181d4bf" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-output application/json
-ns ns0 http://soap.training.mulesoft.com/
----
-payload.body.ns0#findFlightResponse.*return map ( return , indexOfReturn ) -> {
-	airline: return.airlineName default "",
-	flightCode: return.code default "",
-	fromAirportCode: return.origin default "",
-	toAirportCode: return.destination default "",
-	departureDate: return.departureDate default "",
-	emptySeats: return.emptySeats default 0,
-	price: return.price default 0,
-	planeType: return.planeType default ""
-}]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
-	</flow>
 
 
 
