@@ -73,7 +73,7 @@ https://anypoint.mulesoft.com
 |The City of New Orleans|Arlo Guthrie||
 |Can't Find My Way Home|Bonnie Raitt|Stevie Winwood cover|
 |Just Breathe|Willie Nelson with Lukas Nelson|Eddie Vedder cover|
-|Tupelo Honey|Reina del Cid|now records as Elle Cordova|
+|Tupelo Honey|Reina del Cid|she records as Elle Cordova now|
 |Can't Let Go|Lucinda Williams||
 |Dos Oruguitas|Stephen Joseph|Instrumental cover of song from Encanto|
 |Vincent Harp Solo|Vincent|It's the only song he knows on harmonica|
