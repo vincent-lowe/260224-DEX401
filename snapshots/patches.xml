@@ -1,0 +1,124 @@
+	<flow name="getFlights" doc:id="a9ecde99-0801-4b85-b898-ab44fc22101c" >
+		<http:listener doc:name="GET /flights" doc:id="eb5e9756-675d-404f-bf9a-6f370006d7cb" config-ref="mua-flights-api-httpListenerConfig" path="/flights">
+			<http:error-response statusCode="#[vars.httpStatus default 500]" />
+		</http:listener>
+		<set-variable value="#[attributes.queryParams.airline]" doc:name="airline" doc:id="4add58c6-d3f9-4f87-9ff7-5d2e18005906" variableName="airline"/>
+		<choice doc:name="Choice" doc:id="14518362-f894-4680-84e8-17f6c669e807" >
+			<when expression='#[/*Delta*/vars.airline == "delta"]'>
+				<flow-ref doc:name="Delta" doc:id="c9231a73-77ac-476e-9289-756ad4c29301" name="getDeltaFlights"/>
+			</when>
+			<when expression='#[vars.airline == "united"]'>
+				<flow-ref doc:name="United" doc:id="5346bdae-3dad-4bd4-bc27-d982240179dc" name="getUnitedFlights"/>
+			</when>
+			<when expression='#[vars.airline == "american"]'>
+				<flow-ref doc:name="American" doc:id="b3b7af2e-36e7-4c03-aee4-c1b79fd4ff27" name="getAmericanFlights"/>
+			</when>
+			<otherwise >
+				<flow-ref doc:name="all Airlines" doc:id="89f14614-171a-46ef-b4de-bb5c6b00e193" name="getAllAirlinesFlights"/>
+			</otherwise>
+		</choice>
+	</flow>
+	<flow name="getDeltaFlights" doc:id="032d06e2-cdb1-4114-8475-7e71a86b2f72">
+		<http:listener doc:name="GET /delta" doc:id="7f9fad8b-8b4d-4d3b-876c-8dec12650896" config-ref="mua-flights-api-httpListenerConfig" path="/delta" />
+		<flow-ref doc:name="setDestination" doc:id="4cee4fff-b8d8-49de-8f61-2920d9973574" name="setDestination" />
+		<ee:transform doc:name="map input data" doc:id="9dc5e859-6879-4426-9a63-0e8228524095">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/xml
+ns ns0 http://soap.training.mulesoft.com/
+---
+{
+	ns0#findFlight: {
+		destination: vars.destination
+	}
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<wsc:consume doc:name="Delta Flights" doc:id="c19cd050-31c3-4212-9bf5-6a23b9364879" config-ref="Delta_Consumer_Config" operation="findFlight" />
+		<ee:transform doc:name="to canon" doc:id="1f32489b-6fc5-4a54-a995-2a65fa9aa2ab">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+ns ns0 http://soap.training.mulesoft.com/
+---
+payload.body.ns0#findFlightResponse.*return map ( return , indexOfReturn ) -> {
+	airline: return.airlineName default "",
+	flightCode: return.code default "",
+	fromAirportCode: return.origin default "",
+	toAirportCode: return.destination default "",
+	departureDate: return.departureDate default "",
+	emptySeats: return.emptySeats default 0,
+	price: return.price default 0,
+	planeType: return.planeType default ""
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<validation:is-not-null doc:name="payload" doc:id="883c65cd-6e8c-420a-b936-740f9f3ee9a2" value="#[payload]">
+			<error-mapping sourceType="VALIDATION:NULL" targetType="FLIGHTS:NO_FLIGHTS_FOUND" />
+		</validation:is-not-null>
+		<error-handler >
+			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="530249bd-890a-48e4-9575-a0ed1d8a0a86" >
+				<logger level="INFO" doc:name="Logger" doc:id="8c695450-8fee-40cf-b450-5283bde2e4a3" message='output text --- "\nDelta Flow local error handler executed\n"'/>
+				<set-payload value="#[[]]" doc:name="empty array" doc:id="092c8c9a-03b0-4f9d-957c-96ef31a6d404" />
+			</on-error-continue>
+		</error-handler>
+	</flow>
+	<flow name="getAllAirlinesFlights" doc:id="a847a38d-9eb2-4e73-b2ed-d6ef5b9662b8">
+		<http:listener doc:name="GET /allairlines" doc:id="4c5931a9-0b92-462b-a6f3-a461db65f754" config-ref="mua-flights-api-httpListenerConfig" path="/allairlines" />
+		<scatter-gather doc:name="Scatter-Gather" doc:id="3b708d58-dd4d-4034-a137-e7e2eebff6eb">
+			<route>
+				<flow-ref doc:name="Delta" doc:id="e7b3103a-e19e-4cb7-b006-8f5c6595f59f" name="getDeltaFlights" />
+			</route>
+			<route>
+				<flow-ref doc:name="United" doc:id="eede51f1-1cc9-426d-878b-4a044c84967b" name="getUnitedFlights" />
+			</route>
+			<route>
+				<try doc:name="Try" doc:id="70210ba0-2809-4428-b298-31bfb213ae3d" >
+					<flow-ref doc:name="American" doc:id="45b67f41-ca50-4356-b58e-607a08dff3ee" name="getAmericanFlights" />
+					<error-handler >
+						<on-error-continue enableNotifications="true" logException="false" doc:name="On Error Continue" doc:id="3bcb1c60-74c0-4bf0-8246-a98250bbaf4e" >
+							<logger level="INFO" doc:name="Logger" doc:id="23bf0f43-c2f7-4790-ab25-8bee0740524f" message='#[output text --- "\nAmerican Flow scatter gather error handler executed\n"]'/>
+							<set-payload value="#[[]]" doc:name="empty array" doc:id="3d0bfeb6-307a-4b39-ae78-d06c90f07bae" />
+						</on-error-continue>
+					</error-handler>
+				</try>
+			</route>
+		</scatter-gather>
+		<ee:transform doc:name="flatten" doc:id="6603ebdc-d790-4638-a352-554fc116c541">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+flatten(payload..payload)]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="getAmericanFlights" doc:id="89774333-9e97-4908-a763-b76b9166cef1">
+		<http:listener doc:name="GET /american" doc:id="c83a5bd0-ac71-44f4-97cc-b25b3f843024" config-ref="mua-flights-api-httpListenerConfig" path="/american" />
+		<flow-ref doc:name="setDestination" doc:id="7b0b658e-f1c8-43a1-9b12-f9e6c69c4ed2" name="setDestination" />
+		<american-flights-api:get-flights doc:name="Get flights" doc:id="b4443656-068d-4438-8cd8-cbf83bc7ed64" config-ref="American_Flights_API_Config" client-id="2b6e1d0a4bda4fb6a986766395f721ac" client-secret="5727697f45b1491986d748F2A180C95C" destination="#[vars.destination]" />
+		<ee:transform doc:name="Transform Message" doc:id="90ec8d0a-0858-442b-997f-132e580a13d0">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload map ( payload01 , indexOfPayload01 ) -> {
+	airline: "American Airlines",
+	flightCode: payload01.code,
+	fromAirportCode: payload01.origin,
+	toAirportCode: payload01.destination,
+	departureDate: payload01.departureDate,
+	emptySeats: payload01.emptySeats,
+	totalSeats: payload01.plane.totalSeats default 0,
+	price: payload01.price,
+	planeType: payload01.plane."type" default ""
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="false" doc:name="On Error Propagate" doc:id="8155acfe-a5eb-44f4-b475-889a9012d370" type="AMERICAN-FLIGHTS-API:BAD_REQUEST">
+				<logger level="INFO" doc:name="Logger" doc:id="faa22697-28f3-4f5a-b258-ca07e9d2df6e" message='#[output text --- "\nAmerican Flow local error handler executed\n"]'/>
+				<set-variable value="598" doc:name="httpStatus" doc:id="e6047e4a-0ccd-43c7-a92d-a389fe6a3ed8" variableName="httpStatus"/>
+			</on-error-propagate>
+		</error-handler>
+	</flow>pat
