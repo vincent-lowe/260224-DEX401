@@ -83,8 +83,8 @@ https://anypoint.mulesoft.com
 |Vincent Harp Solo|Vincent|It's the only song he knows on harmonica|
 |Analog Hero|Mark Erelli||
 |Hello Goodbye|The Beatles||
-|Hotel 
-California|Moyun||How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
+|Hotel California|Moyun||
+|How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
 |Sixteen Tons|Geoff Castellucci||
 |Foggy Mountain Breakdown|Earl Scruggs||
 |The Cape|Guy Clark||
