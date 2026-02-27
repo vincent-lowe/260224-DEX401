@@ -88,7 +88,7 @@ California|Moyun||How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
 |The Cape|Guy Clark||
 |Feeling Good|Nina Simone||
 |Easy Money|Rebecca Loebe||
-|Hotel California|Moyun|This instrument was never made to play in this key|
+|Hotel California|Moyun|This instrument (Guzheng) was not made to play in this key|
 
 
 
