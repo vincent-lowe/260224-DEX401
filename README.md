@@ -81,14 +81,14 @@ https://anypoint.mulesoft.com
 |Vincent Harp Solo|Vincent|It's the only song he knows on harmonica|
 |Analog Hero|Mark Erelli||
 |Hello Goodbye|The Beatles||
-|Good Day for a Good Day|Michael Franti and Spearhead||
-|How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
+|Hotel 
+California|Moyun||How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
 |Sixteen Tons|Geoff Castellucci||
 |Foggy Mountain Breakdown|Earl Scruggs||
 |The Cape|Guy Clark||
 |Feeling Good|Nina Simone||
 |Easy Money|Rebecca Loebe||
-
+|Hotel California|Moyun|This instrument was never made to play in this key|
 
 
 
