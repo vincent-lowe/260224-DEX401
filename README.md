@@ -84,6 +84,7 @@ https://anypoint.mulesoft.com
 |Analog Hero|Mark Erelli||
 |Hello Goodbye|The Beatles||
 |Hotel California|Moyun||
+|Good Day for a Good Day|Michael Franti and Spearhead||
 |How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
 |Sixteen Tons|Geoff Castellucci||
 |Foggy Mountain Breakdown|Earl Scruggs||
