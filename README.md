@@ -4,6 +4,8 @@ Vincent Lowe
 
 vlowe@salesforce.com
 
+Vincent Blog: https://techwhine.panreality.com/
+
 Cloudshare Login Link: https://use.cloudshare.com/Class/yk7ui
 
 Passphrase: Scarlet the Trustworthy Wombat
