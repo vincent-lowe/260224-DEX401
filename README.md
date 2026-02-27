@@ -4,6 +4,8 @@ Vincent Lowe
 
 vlowe@salesforce.com
 
+Self-paced course: https://trailhead.salesforce.com/users/strailhead/trailmixes/getting-started-with-anypoint-platform-dex-401 
+
 Vincent Blog: https://techwhine.panreality.com/
 
 Cloudshare Login Link: https://use.cloudshare.com/Class/yk7ui
@@ -88,7 +90,7 @@ California|Moyun||How Can You Mend a Broken Heart|Al Green|Bee Gees cover|
 |The Cape|Guy Clark||
 |Feeling Good|Nina Simone||
 |Easy Money|Rebecca Loebe||
-|Hotel California|Moyun|This instrument (Guzheng) was not made to play in this key|
+|Hotel California|Moyun|The instrument (Guzheng) was not designed to play this song|
 
 
 
